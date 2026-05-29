@@ -21,7 +21,7 @@ window.I18N = {
     "hero.badge": "Disponible",
 
     "about.kicker": "01 — Sobre mí",
-    "about.title": "Política, datos y aprendizaje automático.",
+    "about.title": "Inteligencia financiera y aprendizaje de máquina.",
     "about.p1": "Soy politólogo con más de una década trabajando en la intersección entre inteligencia financiera, política pública y análisis avanzado de datos. Actualmente me desempeño como Analista en la Unidad de Inteligencia Financiera del Perú, donde participo en cooperación internacional en materia ALA/CFT/FPADM y en el diseño y seguimiento de marcos de política nacional.",
     "about.p2": "En paralelo, soy docente universitario y comunicador científico: divulgo ciencia de datos, machine learning e inteligencia artificial con un toque de humor en mi canal Data Política.",
     "about.skillsTitle": "Estudios",
@@ -190,7 +190,7 @@ window.I18N = {
     "hero.badge": "Available",
 
     "about.kicker": "01 — About",
-    "about.title": "Politics, data and machine learning.",
+    "about.title": "Financial Intelligence and machine learning.",
     "about.p1": "I'm a political scientist with over a decade working at the intersection of financial intelligence, public policy and advanced data analysis. I currently serve as Cooperation Analyst at Peru's Financial Intelligence Unit, where I'm involved in international AML/CFT/CPF cooperation and the design and follow-up of national policy frameworks.",
     "about.p2": "In parallel I'm a university lecturer and science communicator, breaking down data science, machine learning and AI with a touch of humor on my YouTube channel Data Política.",
     "about.skillsTitle": "Education",
