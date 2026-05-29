@@ -22,7 +22,7 @@ window.I18N = {
 
     "about.kicker": "01 — Sobre mí",
     "about.title": "Política, datos y aprendizaje automático.",
-    "about.p1": "Soy politólogo con más de una década trabajando en la intersección entre inteligencia financiera, política pública y análisis avanzado de datos. Actualmente me desempeño como Analista de Cooperación en la Unidad de Inteligencia Financiera del Perú, donde participo en cooperación internacional en materia ALA/CFT/FPADM y en el diseño y seguimiento de marcos de política nacional.",
+    "about.p1": "Soy politólogo con más de una década trabajando en la intersección entre inteligencia financiera, política pública y análisis avanzado de datos. Actualmente me desempeño como Analista en la Unidad de Inteligencia Financiera del Perú, donde participo en cooperación internacional en materia ALA/CFT/FPADM y en el diseño y seguimiento de marcos de política nacional.",
     "about.p2": "En paralelo, soy docente universitario y comunicador científico: divulgo ciencia de datos, machine learning e inteligencia artificial con un toque de humor en mi canal Data Política.",
     "about.skillsTitle": "Estudios",
     "about.cv": "Descargar CV",
