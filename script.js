@@ -73,7 +73,28 @@
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
 
-  /* ---------- Reveal on scroll ---------- */
+  /* ---------- Mobile menu (hamburger) ---------- */
+  const burger = document.getElementById("nav-burger");
+  const scrim = document.getElementById("nav-scrim");
+  function setMenu(open) {
+    nav.classList.toggle("is-open", open);
+    if (burger) {
+      burger.setAttribute("aria-expanded", open ? "true" : "false");
+      burger.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú");
+    }
+    document.body.style.overflow = open ? "hidden" : "";
+  }
+  burger?.addEventListener("click", () => setMenu(!nav.classList.contains("is-open")));
+  scrim?.addEventListener("click", () => setMenu(false));
+  // close when a section link is tapped
+  document.querySelectorAll(".nav__links .nav__link").forEach(a =>
+    a.addEventListener("click", () => setMenu(false))
+  );
+  // close on Escape, and reset if resized to desktop
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape") setMenu(false); });
+  window.addEventListener("resize", () => { if (window.innerWidth > 760) setMenu(false); });
+
+  /* ---------- Mobile menu (hamburger) end ---------- */
   const io = new IntersectionObserver((entries) => {
     for (const e of entries) {
       if (e.isIntersecting) {
@@ -269,12 +290,12 @@
 
   /* ---------- Projects render ---------- */
   const PROJECTS = [
-    { k: "proj1", tags: ["R", "Python", "SHAP", "XGBoost"], hue: 200, url: "#" },
-    { k: "proj2", tags: ["NLP", "spaCy", "BERT"],          hue: 300, url: "#" },
-    { k: "proj3", tags: ["R", "Shiny", "D3"],              hue: 180, url: "#" },
-    { k: "proj4", tags: ["PyTorch", "BETO", "HuggingFace"], hue: 280, url: "#" },
-    { k: "proj5", tags: ["GANs", "Privacy", "Synthetic"],  hue: 160, url: "#" },
-    { k: "proj6", tags: ["R", "PCA", "Index"],             hue: 220, url: "#" }
+    { k: "proj1", tags: ["R", "Python", "SHAP", "XGBoost"], hue: 200, url: "#", img: "" },
+    { k: "proj2", tags: ["NLP", "spaCy", "BERT"],          hue: 300, url: "#", img: "" },
+    { k: "proj3", tags: ["R", "Shiny", "D3"],              hue: 180, url: "#", img: "" },
+    { k: "proj4", tags: ["PyTorch", "BETO", "HuggingFace"], hue: 280, url: "#", img: "" },
+    { k: "proj5", tags: ["GANs", "Privacy", "Synthetic"],  hue: 160, url: "#", img: "" },
+    { k: "proj6", tags: ["R", "PCA", "Index"],             hue: 220, url: "#", img: "" }
   ];
   const grid = document.getElementById("projects-grid");
   if (grid) {
@@ -309,7 +330,7 @@
       </svg>`;
       return `
       <article class="card reveal" style="--reveal-delay:${i * 60}ms">
-        <div class="proj-thumb">${thumb}</div>
+        <div class="proj-thumb">${p.img ? `<img src="${p.img}" alt="">` : thumb}</div>
         <h3 class="card__title" data-i18n="projects.${p.k}.title"></h3>
         <p class="card__excerpt" data-i18n="projects.${p.k}.desc"></p>
         <div class="tags">${p.tags.map(t => `<span class="tag">${t}</span>`).join("")}</div>
@@ -330,6 +351,74 @@
       io.observe(card);
     });
   }
+
+  /* ---------- Blog thumbnails (image or generated fallback) ---------- */
+  function blogThumbSVG(i) {
+    const W = 320, H = 150;
+    const variant = i % 3;
+    let inner = "";
+    if (variant === 0) {
+      // soft wave area
+      const pts = [];
+      let last = H * 0.55;
+      for (let x = 0; x <= W; x += 18) {
+        last = Math.max(30, Math.min(H - 25, last + (Math.random() - 0.5) * 30));
+        pts.push(`${x},${last.toFixed(1)}`);
+      }
+      inner = `<polyline points="0,${H} ${pts.join(' ')} ${W},${H}" fill="url(#bg${i})" opacity="0.5"/>
+        <polyline points="${pts.join(' ')}" fill="none" stroke="var(--accent-1)" stroke-width="1.6"/>`;
+    } else if (variant === 1) {
+      // grid of dots
+      let dots = "";
+      for (let gx = 0; gx < 10; gx++) for (let gy = 0; gy < 5; gy++) {
+        const on = Math.random() < 0.4;
+        dots += `<circle cx="${gx * 34 + 18}" cy="${gy * 30 + 16}" r="${on ? 3 : 1.4}" fill="var(--accent-1)" opacity="${on ? 0.8 : 0.25}"/>`;
+      }
+      inner = dots;
+    } else {
+      // concentric arcs
+      inner = Array.from({ length: 5 }).map((_, r) =>
+        `<circle cx="${W * 0.7}" cy="${H * 0.6}" r="${22 + r * 20}" fill="none" stroke="var(--accent-${r % 2 ? 2 : 1})" stroke-width="1.2" opacity="${0.5 - r * 0.07}"/>`
+      ).join("");
+    }
+    return `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none">
+      <defs><linearGradient id="bg${i}" x1="0" x2="0" y1="0" y2="1">
+        <stop offset="0" stop-color="var(--accent-1)" stop-opacity="0.6"/>
+        <stop offset="1" stop-color="var(--accent-2)" stop-opacity="0.05"/>
+      </linearGradient></defs>${inner}</svg>`;
+  }
+  document.querySelectorAll(".blog-grid [data-thumb]").forEach((slot, i) => {
+    const card = slot.closest(".card");
+    const img = card && card.getAttribute("data-img");
+    slot.innerHTML = img ? `<img src="${img}" alt="">` : blogThumbSVG(i);
+  });
+
+  /* ---------- Guard: placeholder links (#) must not navigate ---------- */
+  document.addEventListener("click", (e) => {
+    const a = e.target.closest("a");
+    if (!a) return;
+    const href = a.getAttribute("href");
+    // links that point nowhere yet: "#" or empty, or explicitly marked placeholder
+    if (a.hasAttribute("data-placeholder") || href === "#" || href === "" || href == null) {
+      // allow same-page section anchors like "#about", block only bare "#"
+      if (href === "#" || href === "" || href == null || a.hasAttribute("data-placeholder")) {
+        e.preventDefault();
+      }
+    }
+  });
+
+  /* ---------- Material covers (optional real image) ---------- */
+  document.querySelectorAll(".material__cover[data-img]").forEach(cover => {
+    const src = cover.getAttribute("data-img");
+    if (src && src.trim()) {
+      const img = document.createElement("img");
+      img.className = "material__cover-img";
+      img.src = src.trim();
+      img.alt = "";
+      cover.appendChild(img);
+      cover.classList.add("has-img");
+    }
+  });
 
   /* ---------- Email copy ---------- */
   const emailBtn = document.getElementById("email-copy");
