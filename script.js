@@ -289,14 +289,12 @@
   startGraph();
 
   /* ---------- Projects render ---------- */
+  /* Cada proyecto tiene "date" (AAAA-MM). El código los ordena solo,
+     del más reciente al más antiguo — no hace falta reordenar a mano. */
   const PROJECTS = [
-    { k: "proj1", tags: ["R", "Python", "SHAP", "XGBoost"], hue: 200, url: "#", img: "" },
-    { k: "proj2", tags: ["NLP", "spaCy", "BERT"],          hue: 300, url: "#", img: "" },
-    { k: "proj3", tags: ["R", "Shiny", "D3"],              hue: 180, url: "#", img: "" },
-    { k: "proj4", tags: ["PyTorch", "BETO", "HuggingFace"], hue: 280, url: "#", img: "" },
-    { k: "proj5", tags: ["GANs", "Privacy", "Synthetic"],  hue: 160, url: "#", img: "" },
-    { k: "proj6", tags: ["R", "PCA", "Index"],             hue: 220, url: "#", img: "" }
-  ];
+    { k: "projAgentes",   tags: ["n8n", "LLM", "Claude"],              hue: 200, url: "#", img: "assets/proj-aiagent.jpg", date: "2026-05" },
+    { k: "projGobernanza", tags: ["Corrupción", "Estadísticas", "Ciencia Política"], hue: 300, url: "#", img: "assets/proj-corrupcion.jpg", date: "2026-04" }
+  ].sort((a, b) => (b.date || "").localeCompare(a.date || ""));
   const grid = document.getElementById("projects-grid");
   if (grid) {
     grid.innerHTML = PROJECTS.map((p, i) => {
@@ -387,6 +385,20 @@
         <stop offset="1" stop-color="var(--accent-2)" stop-opacity="0.05"/>
       </linearGradient></defs>${inner}</svg>`;
   }
+  /* ---------- Blog auto-sort by date (newest first) ---------- */
+  /* Cada tarjeta de blog tiene data-date="AAAA-MM". El código las ordena
+     solas, de la más reciente a la más antigua. */
+  const blogGrid = document.querySelector(".blog-grid");
+  if (blogGrid) {
+    const cards = [...blogGrid.querySelectorAll(".card")];
+    cards
+      .sort((a, b) => (b.getAttribute("data-date") || "").localeCompare(a.getAttribute("data-date") || ""))
+      .forEach((card, idx) => {
+        card.style.setProperty("--reveal-delay", (idx * 80) + "ms");
+        blogGrid.appendChild(card);
+      });
+  }
+
   document.querySelectorAll(".blog-grid [data-thumb]").forEach((slot, i) => {
     const card = slot.closest(".card");
     const img = card && card.getAttribute("data-img");
@@ -510,6 +522,18 @@
   document.querySelectorAll("#density-chips [data-density]").forEach(b => b.addEventListener("click", () => setDensity(b.dataset.density)));
   document.querySelectorAll("#card-chips [data-card]").forEach(b => b.addEventListener("click", () => setCard(b.dataset.card)));
   document.getElementById("bg-toggle").addEventListener("click", () => setBg(!state.animatedBg));
+
+  /* ---------- Events auto-sort by date (newest first) ---------- */
+  /* Cada tarjeta de evento tiene data-date="AAAA-MM" y se ordena sola. */
+  const eventsGrid = document.querySelector(".events-grid");
+  if (eventsGrid) {
+    [...eventsGrid.querySelectorAll(".event-card")]
+      .sort((a, b) => (b.getAttribute("data-date") || "").localeCompare(a.getAttribute("data-date") || ""))
+      .forEach((card, idx) => {
+        card.style.setProperty("--reveal-delay", (idx * 80) + "ms");
+        eventsGrid.appendChild(card);
+      });
+  }
 
   /* ---------- Lightbox (event images) ---------- */
   const lightbox = document.getElementById("lightbox");
