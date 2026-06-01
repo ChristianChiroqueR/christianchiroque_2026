@@ -11,7 +11,7 @@ window.I18N = {
 
     "hero.eyebrow": "Lima, Perú · Disponible para colaboraciones",
     "hero.name": "Christian Chiroque Ruiz",
-    "hero.role": "Politólogo · Data Scientist · Docente",
+    "hero.role": "Candidato a Doctor en Deep Tech",
     "hero.tagline": "Analista de inteligencia financiera, científico de datos y docente universitario. Más de 10 años en la intersección entre política pública, ALA/CFT y análisis avanzado de datos.",
     "hero.cta.primary": "Ver proyectos",
     "hero.cta.secondary": "Contáctame",
@@ -59,7 +59,7 @@ window.I18N = {
 
     "projects.kicker": "03 — Investigación",
     "projects.title": "Proyectos e investigaciones",
-    "projects.subtitle": "Selección de trabajos en curso. Reemplazaré los placeholders con los proyectos reales que me envíes.",
+    "projects.subtitle": "Selección de trabajos en curso.",
     "projects.projAgentes.title": "Sistema Multi-agente de IA para atención de consultas en entidad pública",
     "projects.projAgentes.desc": "Un proyecto de automatización utilizando agentes de IA, workflows de n8n y LLMs.",
     "projects.projGobernanza.title": "Construyendo gobernanza climática: identificando los riesgos de corrupción en la gestión de recursos naturales",
@@ -127,7 +127,7 @@ window.I18N = {
 
     "events.kicker": "06 — En vivo",
     "events.title": "Eventos",
-    "events.subtitle": "Conferencias, paneles y talleres recientes. Las fotos llegarán pronto.",
+    "events.subtitle": "Conferencias, paneles y talleres recientes.",
     "events.placeholder": "Foto del evento",
     "events.ev1.title": "Standards Training Course — FATF Academy",
     "events.ev1.where": "Busan, Corea del Sur",
@@ -174,7 +174,7 @@ window.I18N = {
 
     "hero.eyebrow": "Lima, Peru · Open to collaborations",
     "hero.name": "Christian Chiroque Ruiz",
-    "hero.role": "Political scientist · Data scientist · Lecturer",
+    "hero.role": "Ph.D. Candidate in Deep Tech",
     "hero.tagline": "Financial intelligence analyst, data scientist and university lecturer. 10+ years at the intersection of public policy, AML/CFT and advanced data analysis.",
     "hero.cta.primary": "See projects",
     "hero.cta.secondary": "Get in touch",
@@ -222,7 +222,7 @@ window.I18N = {
 
     "projects.kicker": "03 — Research",
     "projects.title": "Projects & research",
-    "projects.subtitle": "A selection of ongoing work. I'll swap placeholders for the real projects you send me.",
+    "projects.subtitle": "A selection of ongoing work.",
     "projects.projAgentes.title": "Multi-agent AI system for handling inquiries at a public agency",
     "projects.projAgentes.desc": "An automation project using AI agents, n8n workflows and LLMs.",
     "projects.projGobernanza.title": "Building climate governance: identifying corruption risks in natural resource management",
@@ -290,7 +290,7 @@ window.I18N = {
 
     "events.kicker": "06 — Live",
     "events.title": "Events",
-    "events.subtitle": "Recent talks, panels and workshops. Photos coming soon.",
+    "events.subtitle": "Recent talks, panels and workshops.",
     "events.placeholder": "Event photo",
     "events.ev1.title": "Standards Training Course — FATF Academy",
     "events.ev1.where": "Busan, South Korea",
