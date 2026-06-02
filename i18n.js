@@ -45,7 +45,7 @@ window.I18N = {
 
     "blog.kicker": "02 — Escritos",
     "blog.title": "Blog",
-    "blog.subtitle": "Notas sobre datos, política y modelos. Próximamente actualizado con contenido real.",
+    "blog.subtitle": "Notas sobre datos, política y modelos.",
     "blog.readMore": "Leer más",
     "blog.post1.tag": "Inteligencia financiera",
     "blog.post1.title": "¿LA y FT o LA/FT? Una distinción necesaria",
@@ -208,7 +208,7 @@ window.I18N = {
 
     "blog.kicker": "02 — Writing",
     "blog.title": "Blog",
-    "blog.subtitle": "Notes on data, policy and models. Soon to be updated with real content.",
+    "blog.subtitle": "Notes on data, policy and models.",
     "blog.readMore": "Read more",
     "blog.post1.tag": "Financial intelligence",
     "blog.post1.title": "ML and TF or ML/TF? A necessary distinction",
