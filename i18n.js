@@ -17,7 +17,7 @@ window.I18N = {
     "hero.cta.secondary": "Contáctame",
     "hero.stat1.k": "Años de experiencia",
     "hero.stat2.k": "Suscriptores en YouTube",
-    "hero.stat3.k": "Cursos dictados",
+    "hero.stat3.k": "Alumnos formados",
     "hero.badge": "Disponible",
 
     "about.kicker": "01 — Sobre mí",
@@ -180,7 +180,7 @@ window.I18N = {
     "hero.cta.secondary": "Get in touch",
     "hero.stat1.k": "Years of experience",
     "hero.stat2.k": "YouTube subscribers",
-    "hero.stat3.k": "Courses taught",
+    "hero.stat3.k": "Students taught",
     "hero.badge": "Available",
 
     "about.kicker": "01 — About",
